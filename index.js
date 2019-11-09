@@ -81,9 +81,8 @@ function config(overObject) {
 
   //let old = _keepOldEnv() // For Debug
 
-  let x2 = loadDotEnv([ '.env', 'config/.env' ]);
-
-  loadJSON([ 'config.json', 'config/config.json', 'env.config', 'config/env.config' ]);
+  loadDotEnv([ '.env', 'config/.env' ])
+  loadJSON([ 'config.json', 'config/config.json', 'env.config', 'config/env.config' ])
 
   if (overObject)
     Object.keys(overObject)
@@ -94,5 +93,4 @@ function config(overObject) {
   //_compareOld(old) // For Debug
 }
 
-config();
 module.exports = config;
