@@ -1,6 +1,6 @@
 {
   "name": "load-env-config",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Load environment config files",
   "main": "index.js",
   "scripts": {

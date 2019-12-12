@@ -81,8 +81,16 @@ function config(overObject) {
 
   //let old = _keepOldEnv() // For Debug
 
-  loadDotEnv([ '.env', 'config/.env' ])
-  loadJSON([ 'config.json', 'config/config.json', 'env.config', 'config/env.config' ])
+  loadJSON([
+    'config.json',
+    'config/config.json',
+    'conf/config.json',
+    'env.config',
+    'config/env.config',
+    'conf/env.config'
+  ])
+
+  loadDotEnv([ '.env', 'config/.env', 'conf/.env' ])
 
   if (overObject)
     Object.keys(overObject)
