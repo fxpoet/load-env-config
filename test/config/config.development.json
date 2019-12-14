@@ -1,0 +1,6 @@
+{
+  "is_dev_mode": true,
+  "server": {
+    "port": 8000
+  }
+}

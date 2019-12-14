@@ -1,0 +1,7 @@
+{
+  "this_is": "config.json",
+  "server": {
+    "port": 9000,
+    "spec": "e5"
+  }
+}

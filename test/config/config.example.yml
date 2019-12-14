@@ -1,0 +1,4 @@
+this_is: config.example.yml
+server:
+  port: 0
+  location: aws

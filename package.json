@@ -1,22 +1,28 @@
 {
   "name": "load-env-config",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "Load environment config files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git://git@github.com/fxpoet/load-env-config.git"
   },
   "author": {
-  	"name": "Kiyoung Jung",
-	  "email": "im@fxpoet.com"
+    "name": "Kiyoung Jung",
+    "email": "im@fxpoet.com"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fxpoet/load-env-config/issues"
   },
-  "homepage": "https://github.com/fxpoet/load-env-config#readme"
+  "homepage": "https://github.com/fxpoet/load-env-config#readme",
+  "dependencies": {
+    "js-yaml": "^3.13.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
