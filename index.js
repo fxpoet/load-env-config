@@ -6,6 +6,7 @@ const yaml   = require('js-yaml')
 
 const default_fileList = [
   'config/config.json',
+  'config/config.yml',
   'conf/config.json',
   'conf/config.yml',
   //'conf/config.development.yml', // auto load
@@ -41,7 +42,7 @@ function putEnvValue(key, value, cache, options) {
   if (typeof(value) != 'object') {
 
     if (options.export)
-      process.env[key] = value;
+      process.env[key.toUpperCase()] = value;
 
     cache[key] = value;
   } else
