@@ -104,6 +104,18 @@ function resolveFiles(file_list) {
   return loadTarget;
 }
 
+function getValue(data, path) {
+  let p = path.split(".");
+  let t = data;
+
+  for (let i=0; i < p.length; i++) {
+    if (t == undefined) break;
+    t = t[p[i]];
+  }
+
+  return t;
+}
+
 // ------------------------------------------------
 // 불러올 파일을 순서대로 정한다. 이왕이면 명시적인게 좋다.
 function config(loadFileList, options) {
@@ -140,7 +152,7 @@ function config(loadFileList, options) {
 
   loadedFiles = loadedFiles.filter(i => i);
 
-  return {order: loadedFiles, values: cached}
+  return {order: loadedFiles, values: cached, store: getValue.bind(null, cached) }
 }
 
 module.exports = config;

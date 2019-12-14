@@ -68,3 +68,14 @@ test('undefined env', () => {
     expect( output.values.server.port ).toBe(9000)
 
 })
+
+test('store', () => {
+
+    process.env.NODE_ENV = undefined;
+    let loadEnvConfig = require('../index.js')
+
+    let { order, values, store } = loadEnvConfig(['./test/config'], {export:false});
+
+    expect( store('server.port') ).toBe(9000)
+
+})
