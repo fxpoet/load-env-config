@@ -76,6 +76,7 @@ test('store', () => {
 
     let { order, values, store } = loadEnvConfig(['./test/config'], {export:false});
 
-    expect( store('server.port') ).toBe(9000)
+    expect( store('server.port') ).toBe( 9000 )
+    expect( store('server.no_field', true) ).toBe( true )
 
 })

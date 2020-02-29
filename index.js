@@ -2,6 +2,7 @@ const fs     = require('fs')
 const path   = require('path')
 const dotenv = require('./dotenv.js')
 const yaml   = require('js-yaml')
+const deepmerge = require('deepmerge')
 //-----------------------------------------------------------------
 
 const default_fileList = [
@@ -104,7 +105,7 @@ function resolveFiles(file_list) {
   return loadTarget;
 }
 
-function getValue(data, path) {
+function getValue(data, path, defValue) {
   let p = path.split(".");
   let t = data;
 
@@ -113,12 +114,15 @@ function getValue(data, path) {
     t = t[p[i]];
   }
 
+  if (t == undefined)
+    t = defValue;
+
   return t;
 }
 
 // ------------------------------------------------
 // 불러올 파일을 순서대로 정한다. 이왕이면 명시적인게 좋다.
-function config(loadFileList, options) {
+function configInit(loadFileList, options) {
 
   if (Array.isArray(loadFileList) == false) {
     options = loadFileList;
@@ -152,7 +156,35 @@ function config(loadFileList, options) {
 
   loadedFiles = loadedFiles.filter(i => i);
 
-  return {order: loadedFiles, values: cached, store: getValue.bind(null, cached) }
+  // overwrite new variabels over default object
+  if (options.defaults)
+    cached = deepmerge(options.defaults || {}, cached)
+
+
+  function config(path, defValue) {
+    let p = path.split(".");
+    let t = config;
+
+    for (let i=0; i < p.length; i++) {
+      if (t == undefined) break;
+      t = t[p[i]];
+    }
+
+    if (t == undefined) t = defValue;
+
+    return t;
+  }
+
+  for (let key in cached) {
+    config[key] = cached[key];
+  }
+
+  return {
+    order: loadedFiles,
+    values: cached,
+    store: getValue.bind(null, cached),
+    config
+  }
 }
 
-module.exports = config;
+module.exports = configInit;

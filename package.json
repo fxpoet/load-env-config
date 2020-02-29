@@ -1,6 +1,6 @@
 {
   "name": "load-env-config",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "description": "Load environment config files",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/fxpoet/load-env-config#readme",
   "dependencies": {
+    "deepmerge": "^4.2.2",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
